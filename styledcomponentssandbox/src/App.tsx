@@ -1,14 +1,24 @@
-import { Button, PrimaryButton, SubmitButton } from './components/Button.style';
-import { Wrapped } from './components/Wrapper.style';
+import { ThemeProvider } from 'styled-components';
+import Header from './components/Header';
+import { Container } from './components/styles/Container.styled';
+import { theme } from './GlobalStyle';
+import content from './content';
+import Card from './components/Card';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <Wrapped>
-      <Button variant="ao">Botão normal</Button>
-      <Button variant="outline">Botão Outline</Button>
-      <PrimaryButton variant="">Primary Button</PrimaryButton>
-      <SubmitButton>Enviar</SubmitButton>
-    </Wrapped>
+    <>
+      <ThemeProvider theme={theme}>
+        <Header></Header>
+        <Container>
+          {content.map((item, index) => (
+            <Card key={index} item={item} />
+          ))}
+        </Container>
+        <Footer></Footer>
+      </ThemeProvider>
+    </>
   );
 }
 
